@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "outFile": "../dist/JSESCPOSBuilder.js",
+    "sourceMap": false,
+    "removeComments": true,
+    "module": "None",
+    "strict": false, 
+    "declaration": true,
+    "lib": ["ES2015", "DOM"]
+  },
+  "include": ["ts/*.ts"]
+}
