@@ -258,11 +258,12 @@ var Neodynamic;
                 ]);
                 return this;
             }
-            setPrintWidth(width) {
+            setPrintWidth(newWidth) {
+                this.width = newWidth;
                 this._addB([
                     JSESCPOSBuilder.Constants.GS,
                     [87],
-                    JSESCPOSBuilder.Utils.int16ToArray(width),
+                    JSESCPOSBuilder.Utils.int16ToArray(newWidth),
                 ]);
                 return this;
             }

@@ -23,11 +23,12 @@ namespace Neodynamic.JSESCPOSBuilder {
       return this;
     }
     
-    public setPrintWidth(width: number): Document {
+    public setPrintWidth(newWidth: number): Document {
+      this.width = newWidth;  
       this._addB([
         Constants.GS,
         [87],
-        Utils.int16ToArray(width),
+        Utils.int16ToArray(newWidth),
       ]);
       return this;
     }
