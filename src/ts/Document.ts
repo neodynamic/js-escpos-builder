@@ -22,6 +22,15 @@ namespace Neodynamic.JSESCPOSBuilder {
       ]);
       return this;
     }
+    
+    public setPrintWidth(width: number): Document {
+      this._addB([
+        Constants.GS,
+        [87],
+        Utils.int16ToArray(width),
+      ]);
+      return this;
+    }
 
     public marginBottom(size: number): Document {
       if (!Utils.isValidUInt8(size)) throw "Invalid size";
