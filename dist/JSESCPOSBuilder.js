@@ -258,6 +258,14 @@ var Neodynamic;
                 ]);
                 return this;
             }
+            setPrintWidth(width) {
+                this._addB([
+                    JSESCPOSBuilder.Constants.GS,
+                    [87],
+                    JSESCPOSBuilder.Utils.int16ToArray(width),
+                ]);
+                return this;
+            }
             marginBottom(size) {
                 if (!JSESCPOSBuilder.Utils.isValidUInt8(size))
                     throw "Invalid size";

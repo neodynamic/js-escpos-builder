@@ -175,6 +175,7 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         constructor();
         private _addB(value);
         setCharacterCodeTable(code_table: number): Document;
+        setPrintWidth(width: number): Document;
         marginBottom(size: number): Document;
         marginLeft(size: number): Document;
         marginRight(size: number): Document;
