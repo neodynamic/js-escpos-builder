@@ -148,3 +148,34 @@ Most of the code of this project was based on the [https://github.com/escpos/nod
 </body>
 </html>
 ```
+
+## About ESC/POS International Text
+
+To print text in different languages you must be sure that the printer supports it. After that confirmation, you must specify the correct [**ESC/POS CodePage**](https://reference.epson-biz.com/modules/ref_charcode_en/index.php?content_id=1) (which might differ from ESC/POS compatible printers that are not from EPSON company) by using the `setCharacterCodeTable()` function and also specify the code page (from [https://github.com/SheetJS/js-codepage#generated-codepages](https://github.com/SheetJS/js-codepage#generated-codepages)) to the `text()` function.
+
+> IMPORTANT: Not all printers support a given CodePage so please refer to the manufacturer for further details. The following [json file](https://github.com/mike42/escpos-php/blob/development/src/Mike42/Escpos/resources/capabilities.json) used by excellent project [https://github.com/mike42/escpos-php](https://github.com/mike42/escpos-php)
+lists many printer models and the codePages supported by them. Anyway, always ask to the manufacturer for assistance.
+
+The following sample code generates ESC/POS commands for texts in different languages based on EPSON printers.
+```js
+var escposCommands = doc
+                       .font(escpos.FontFamily.B)
+                       .size(0, 0)
+                       // Windows-1252 Western European: Supports French, Spanish, Italian, Portuguese, German
+                       .setCharacterCodeTable(16) // WPC1252 from EPSON CodePage
+                       .text("Voix ambiguë d'un cœur qui, au zéphyr, préfère les jattes de kiwis", 1252) // French
+                       .text("Tendré que ir a España. ¿Cómo? Por avión.", 1252) // Spanish
+                       .text("L'articolo è uno. Uno scontrino, perché? Perché la parola inizia per s più consonante.", 1252) // Italian
+                       .text("Luís argüia à Júlia que «brações, fé, chá, óxido, pôr, zângão» eram palavras do português.", 1252) // Portuguese
+                       .text("Köln ist größer als Garmisch Partenkirchen. Der Rhein ist länger als die Mosel.", 1252) // German
+                       // Greek
+                       .setCharacterCodeTable(14) // PC737 from EPSON CodePage
+                       .text("καλημέρα", 737)
+                       // Russian Cyrillic 
+                       .setCharacterCodeTable(17) // PC866 from EPSON CodePage
+                       .text("Быстрая коричневая лиса прыгает через ленивую собаку", 866)
+
+                       .feed(5)
+                       .cut()
+                       .generateUInt8Array();
+```
