@@ -336,7 +336,7 @@ var Neodynamic;
                 return this;
             }
             align(alignment) {
-                let buf = JSESCPOSBuilder.Constants.TXT_ALIGNMENT;
+                let buf = [].concat(JSESCPOSBuilder.Constants.TXT_ALIGNMENT);
                 switch (alignment) {
                     case JSESCPOSBuilder.TextAlignment.Center:
                         buf.push(1);
@@ -352,7 +352,7 @@ var Neodynamic;
                 return this;
             }
             font(family) {
-                let buf = JSESCPOSBuilder.Constants.TXT_FONT_FAMILY;
+                let buf = [].concat(JSESCPOSBuilder.Constants.TXT_FONT_FAMILY);
                 switch (family) {
                     case JSESCPOSBuilder.FontFamily.A:
                         buf.push(0);
