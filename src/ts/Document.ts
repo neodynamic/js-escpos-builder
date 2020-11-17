@@ -106,7 +106,7 @@ namespace Neodynamic.JSESCPOSBuilder {
     }
 
     public align(alignment: TextAlignment): Document {
-      let buf = Constants.TXT_ALIGNMENT;
+      let buf = [].concat(Constants.TXT_ALIGNMENT);
       switch (alignment) {
         case TextAlignment.Center:
           buf.push(1);
@@ -123,7 +123,7 @@ namespace Neodynamic.JSESCPOSBuilder {
     }
 
     public font(family: FontFamily): Document {
-      let buf = Constants.TXT_FONT_FAMILY;
+      let buf = [].concat(Constants.TXT_FONT_FAMILY);
       switch (family) {
         case FontFamily.A:
           buf.push(0);
