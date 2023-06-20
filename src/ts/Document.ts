@@ -323,7 +323,7 @@ namespace Neodynamic.JSESCPOSBuilder {
           this._addB([CashDrawer.KICK_2]);
         } break;
         case 5: {
-          this._addB([CashDrawer.KICK_2]);
+          this._addB([CashDrawer.KICK_5]);
         } break;
         default: {
           this._addB([CashDrawer.KICK_2]);
