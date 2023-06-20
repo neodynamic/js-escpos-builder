@@ -578,7 +578,7 @@ var Neodynamic;
                         break;
                     case 5:
                         {
-                            this._addB([JSESCPOSBuilder.CashDrawer.KICK_2]);
+                            this._addB([JSESCPOSBuilder.CashDrawer.KICK_5]);
                         }
                         break;
                     default:
