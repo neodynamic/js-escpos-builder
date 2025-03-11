@@ -336,7 +336,8 @@ var Neodynamic;
                 return this;
             }
             align(alignment) {
-                let buf = [].concat(JSESCPOSBuilder.Constants.TXT_ALIGNMENT);
+                let buf = [];
+                buf = buf.concat(JSESCPOSBuilder.Constants.TXT_ALIGNMENT);
                 switch (alignment) {
                     case JSESCPOSBuilder.TextAlignment.Center:
                         buf.push(1);
@@ -352,7 +353,8 @@ var Neodynamic;
                 return this;
             }
             font(family) {
-                let buf = [].concat(JSESCPOSBuilder.Constants.TXT_FONT_FAMILY);
+                let buf = [];
+                buf = buf.concat(JSESCPOSBuilder.Constants.TXT_FONT_FAMILY);
                 switch (family) {
                     case JSESCPOSBuilder.FontFamily.A:
                         buf.push(0);
@@ -578,7 +580,7 @@ var Neodynamic;
                         break;
                     case 5:
                         {
-                            this._addB([JSESCPOSBuilder.CashDrawer.KICK_5]);
+                            this._addB([JSESCPOSBuilder.CashDrawer.KICK_2]);
                         }
                         break;
                     default:

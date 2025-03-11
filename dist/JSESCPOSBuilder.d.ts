@@ -173,7 +173,7 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         encoding: number;
         width: number;
         constructor();
-        private _addB(value);
+        private _addB;
         setCharacterCodeTable(code_table: number): Document;
         setPrintWidth(newWidth: number): Document;
         marginBottom(size: number): Document;
@@ -192,7 +192,7 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         lineSpacing(value?: number): Document;
         hardware(hardware: Hardware): Document;
         linearBarcode(code: string, type: Barcode1DType, options?: Barcode1DOptions): Document;
-        private _wrapperSend2DCodeData(func, code_type, data?, modifier?);
+        private _wrapperSend2DCodeData;
         qrCode(code: string, options?: BarcodeQROptions): Document;
         pdf417(code: string, options?: BarcodePDF417Options): Document;
         cashDraw(pin?: number): Document;
@@ -209,7 +209,7 @@ declare namespace Neodynamic.JSESCPOSBuilder {
 }
 declare namespace Neodynamic.JSESCPOSBuilder {
     enum PrinterModel {
-        Generic = 0,
+        Generic = 0
     }
     enum FeedControlSequence {
         PrintLineFeed = 0,
@@ -217,28 +217,28 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         FormFeed = 2,
         CarriageReturn = 3,
         HorizontalTab = 4,
-        VerticalTab = 5,
+        VerticalTab = 5
     }
     enum TextAlignment {
         LeftJustification = 0,
         Center = 1,
-        RightJustification = 2,
+        RightJustification = 2
     }
     enum FontFamily {
         A = 0,
         B = 1,
-        C = 2,
+        C = 2
     }
     enum FontStyle {
         Bold = 0,
         Italic = 1,
         Underline = 2,
-        Underline2 = 3,
+        Underline2 = 3
     }
     enum Hardware {
         Init = 0,
         Select = 1,
-        Reset = 2,
+        Reset = 2
     }
     enum Barcode1DType {
         UPC_A = 0,
@@ -249,29 +249,29 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         ITF = 5,
         CODE93 = 6,
         CODE128 = 7,
-        CODABAR = 8,
+        CODABAR = 8
     }
     enum BarcodeTextPosition {
         Off = 0,
         Above = 1,
         Below = 2,
-        AboveAndBelow = 3,
+        AboveAndBelow = 3
     }
     enum BarcodeFont {
         A = 0,
-        B = 1,
+        B = 1
     }
     enum QRLevel {
         L = 0,
         M = 1,
         Q = 2,
-        H = 3,
+        H = 3
     }
     enum BitmapDensity {
         S8 = 0,
         D8 = 1,
         S24 = 2,
-        D24 = 3,
+        D24 = 3
     }
 }
 declare namespace Neodynamic.JSESCPOSBuilder {
@@ -294,10 +294,10 @@ declare namespace Neodynamic.JSESCPOSBuilder {
     class ESCPOSImage {
         pixels?: PixelsStruct;
         data: number[];
-        private rgb(pixel);
+        private rgb;
         constructor(pixels: PixelsStruct);
         static load(b64_image: string): Promise<ESCPOSImage>;
-        readonly size: ESCPOSImageSize | undefined;
+        get size(): ESCPOSImageSize | undefined;
         toBitmap(density: number): {
             data: number[][];
             density: number;
