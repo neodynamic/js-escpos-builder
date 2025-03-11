@@ -106,7 +106,8 @@ namespace Neodynamic.JSESCPOSBuilder {
     }
 
     public align(alignment: TextAlignment): Document {
-      let buf = [].concat(Constants.TXT_ALIGNMENT);
+      let buf = [];
+      buf = buf.concat(Constants.TXT_ALIGNMENT);
       switch (alignment) {
         case TextAlignment.Center:
           buf.push(1);
@@ -123,7 +124,8 @@ namespace Neodynamic.JSESCPOSBuilder {
     }
 
     public font(family: FontFamily): Document {
-      let buf = [].concat(Constants.TXT_FONT_FAMILY);
+      let buf = [];
+      buf = buf.concat(Constants.TXT_FONT_FAMILY);
       switch (family) {
         case FontFamily.A:
           buf.push(0);
@@ -323,7 +325,7 @@ namespace Neodynamic.JSESCPOSBuilder {
           this._addB([CashDrawer.KICK_2]);
         } break;
         case 5: {
-          this._addB([CashDrawer.KICK_5]);
+          this._addB([CashDrawer.KICK_2]);
         } break;
         default: {
           this._addB([CashDrawer.KICK_2]);
