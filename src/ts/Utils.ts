@@ -35,6 +35,7 @@ namespace Neodynamic.JSESCPOSBuilder {
     }
 
     public static int16ToArray(number: number): number[] {
+      if (number < 256) return [number];
       return [number & 0xFF,
         (number >> 8) & 0xFF];
     }

@@ -173,14 +173,16 @@ namespace Neodynamic.JSESCPOSBuilder {
     public position: BarcodeTextPosition = BarcodeTextPosition.Below;
     public include_parity: boolean = true;
     public font: BarcodeFont = BarcodeFont.A;
-    
+    public code128_charset: Code128CharSet = Code128CharSet.B;
+
     constructor(width? :number, height?: number, include_parity = true,
-      position = BarcodeTextPosition.Below, font = BarcodeFont.A) {
+      position = BarcodeTextPosition.Below, font = BarcodeFont.A, code128_charset = Code128CharSet.B) {
         this.width = width;
         this.height = height;
         this.position = position;
         this.include_parity = include_parity;
         this.font = font;
+        this.code128_charset = code128_charset;
       }
   }
 

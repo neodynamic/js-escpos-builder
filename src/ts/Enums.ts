@@ -72,4 +72,10 @@ namespace Neodynamic.JSESCPOSBuilder {
     S24,
     D24
   }
+
+  export enum Code128CharSet {
+    A,
+    B,
+    C
+  }
 }

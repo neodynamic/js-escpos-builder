@@ -262,7 +262,8 @@ namespace Neodynamic.JSESCPOSBuilder {
         } break;
         case Barcode1DType.CODE128: {
           buf.push(BarcodeFormat.CODE128);
-          buf.push(Utils.codeLengthUInt16(code));
+          buf.push(JSESCPOSBuilder.Utils.codeLengthUInt16(code + '00')); // 00 is a fake two length for charset param below
+          buf.push([123, options.code128_charset + 65]); // code 128 charset
         } break;
         case Barcode1DType.CODE93: {
           buf.push(BarcodeFormat.CODE93);
@@ -278,7 +279,8 @@ namespace Neodynamic.JSESCPOSBuilder {
       buf.push(cptable.utils.encode(this.encoding, code));
       if (options.include_parity && type in [Barcode1DType.EAN13, Barcode1DType.EAN8])
         buf.push([Utils.getParityBit(code)]);
-      buf.push([0]);
+      if (type <= 6)
+        buf.push([0]);
       this._addB(buf);
       return this;
     }
