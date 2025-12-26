@@ -150,7 +150,8 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         position: BarcodeTextPosition;
         include_parity: boolean;
         font: BarcodeFont;
-        constructor(width?: number, height?: number, include_parity?: boolean, position?: BarcodeTextPosition, font?: BarcodeFont);
+        code128_charset: Code128CharSet;
+        constructor(width?: number, height?: number, include_parity?: boolean, position?: BarcodeTextPosition, font?: BarcodeFont, code128_charset?: Code128CharSet);
     }
     class BarcodePDF417Options {
         width: number;
@@ -272,6 +273,11 @@ declare namespace Neodynamic.JSESCPOSBuilder {
         D8 = 1,
         S24 = 2,
         D24 = 3
+    }
+    enum Code128CharSet {
+        A = 0,
+        B = 1,
+        C = 2
     }
 }
 declare namespace Neodynamic.JSESCPOSBuilder {

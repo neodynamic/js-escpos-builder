@@ -194,15 +194,17 @@ var Neodynamic;
         Screen.US_v = [31, 118];
         JSESCPOSBuilder.Screen = Screen;
         class Barcode1DOptions {
-            constructor(width, height, include_parity = true, position = JSESCPOSBuilder.BarcodeTextPosition.Below, font = JSESCPOSBuilder.BarcodeFont.A) {
+            constructor(width, height, include_parity = true, position = JSESCPOSBuilder.BarcodeTextPosition.Below, font = JSESCPOSBuilder.BarcodeFont.A, code128_charset = JSESCPOSBuilder.Code128CharSet.B) {
                 this.position = JSESCPOSBuilder.BarcodeTextPosition.Below;
                 this.include_parity = true;
                 this.font = JSESCPOSBuilder.BarcodeFont.A;
+                this.code128_charset = JSESCPOSBuilder.Code128CharSet.B;
                 this.width = width;
                 this.height = height;
                 this.position = position;
                 this.include_parity = include_parity;
                 this.font = font;
+                this.code128_charset = code128_charset;
             }
         }
         JSESCPOSBuilder.Barcode1DOptions = Barcode1DOptions;
@@ -511,7 +513,8 @@ var Neodynamic;
                     case JSESCPOSBuilder.Barcode1DType.CODE128:
                         {
                             buf.push(JSESCPOSBuilder.BarcodeFormat.CODE128);
-                            buf.push(JSESCPOSBuilder.Utils.codeLengthUInt16(code));
+                            buf.push(JSESCPOSBuilder.Utils.codeLengthUInt16(code + '00'));
+                            buf.push([123, options.code128_charset + 65]);
                         }
                         break;
                     case JSESCPOSBuilder.Barcode1DType.CODE93:
@@ -534,7 +537,8 @@ var Neodynamic;
                 buf.push(cptable.utils.encode(this.encoding, code));
                 if (options.include_parity && type in [JSESCPOSBuilder.Barcode1DType.EAN13, JSESCPOSBuilder.Barcode1DType.EAN8])
                     buf.push([JSESCPOSBuilder.Utils.getParityBit(code)]);
-                buf.push([0]);
+                if (type <= 6)
+                    buf.push([0]);
                 this._addB(buf);
                 return this;
             }
@@ -763,6 +767,12 @@ var Neodynamic;
             BitmapDensity[BitmapDensity["S24"] = 2] = "S24";
             BitmapDensity[BitmapDensity["D24"] = 3] = "D24";
         })(BitmapDensity = JSESCPOSBuilder.BitmapDensity || (JSESCPOSBuilder.BitmapDensity = {}));
+        let Code128CharSet;
+        (function (Code128CharSet) {
+            Code128CharSet[Code128CharSet["A"] = 0] = "A";
+            Code128CharSet[Code128CharSet["B"] = 1] = "B";
+            Code128CharSet[Code128CharSet["C"] = 2] = "C";
+        })(Code128CharSet = JSESCPOSBuilder.Code128CharSet || (JSESCPOSBuilder.Code128CharSet = {}));
     })(JSESCPOSBuilder = Neodynamic.JSESCPOSBuilder || (Neodynamic.JSESCPOSBuilder = {}));
 })(Neodynamic || (Neodynamic = {}));
 var Neodynamic;
@@ -956,6 +966,8 @@ var Neodynamic;
                     (number >> 24) & 0xFF];
             }
             static int16ToArray(number) {
+                if (number < 256)
+                    return [number];
                 return [number & 0xFF,
                     (number >> 8) & 0xFF];
             }
